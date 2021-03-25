@@ -1,0 +1,20 @@
+.pic img {
+    width: 1000px;
+    height: 100px;
+}
+.descriptionBlock {
+    padding: 10px;
+}
+.userPhoto {
+    width: 250px;
+}
+.contact {
+    padding-left: 20px;
+}
+.status {
+    text-decoration: underline;
+}
+b, h3 {
+    font-style: italic;
+    color: rgb(105, 105, 233);
+}

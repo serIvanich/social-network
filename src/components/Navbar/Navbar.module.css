@@ -1,0 +1,48 @@
+.nav {
+    grid-area: n;
+    background-color: rgb(214, 235, 97);
+    
+}
+
+.item {
+    margin-left: 30%;
+    margin-top: 15%;
+    
+}
+.item a {
+
+    color: white;
+    background-color: rgb(10, 130, 167);
+    text-decoration: none;
+    
+    border-radius: 20% 0%;
+    padding: 10px;
+    box-shadow: 25px 4px 0  #c20202 ;
+    transition: 0.7s ;
+}
+
+.item a:hover {
+    font-size: 150%;
+    color :#5f0404;
+    background-color: rgb(196, 3, 3);
+    box-shadow: 3px 4px rgb(91, 135, 192);
+    
+}
+
+.main a {
+    color: rgb(238, 240, 118);
+}
+
+.item a.activeLink {
+    color: rgb(247, 246, 241);
+    border: 2px hsl(44, 94%, 50%) solid;
+    font-size: 150%;
+    background-color: rgb(196, 3, 3);
+    box-shadow: 3px 4px rgb(91, 135, 192);
+    
+}
+
+.sidebar {
+    margin: 50px 50px;
+    
+}

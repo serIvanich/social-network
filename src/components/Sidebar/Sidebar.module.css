@@ -1,0 +1,11 @@
+.sidebar h3 {
+    
+    color: rgb(30, 168, 122);
+}
+.friend {
+    display: inline;
+    padding-top: 15px;
+}
+/* .sidebar .friendsLine {
+    display: inline-block;
+} */
