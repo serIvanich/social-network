@@ -3,7 +3,7 @@ import s from './Users.module.css'
 import Paginator from '../common/Paginator/Paginator'
 import {User} from './User'
 import UsersSearchForm from './UsersSearchForm'
-import {requestUsers, UsersSearchFilterType} from '../../redux/users-reducer'
+import {follow, requestUsers, unfollow, UsersSearchFilterType} from '../../redux/users-reducer'
 import {useDispatch, useSelector} from "react-redux";
 import {
     getCurrentPage,
@@ -36,10 +36,10 @@ export const Users: FC<UsersPropsType> = React.memo(() => {
     const onFilterChanged = (filter: UsersSearchFilterType) => {
         dispatch(requestUsers(1, currentPage, filter))
     }
-    const follow = (userId: number) => {
+    const isFollow = (userId: number) => {
         dispatch(follow(userId))
     }
-    const unfollow = (userId: number) => {
+    const isUnfollow = (userId: number) => {
         dispatch(unfollow(userId))
     }
 
@@ -56,8 +56,8 @@ export const Users: FC<UsersPropsType> = React.memo(() => {
 
         {users.map(u => <User key={u.id} user={u}
                               followingInProgress={followingInProgress}
-                              unfollow={unfollow}
-                              follow={follow}/>)}
+                              unfollow={isUnfollow}
+                              follow={isFollow}/>)}
 
 
     </div>

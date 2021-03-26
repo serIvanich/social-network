@@ -18,14 +18,15 @@ import {initializeApp} from './redux/app-reducer';
 import Preloader from './components/common/Preload/Preload';
 import store, {AppStateType} from './redux/redux-store';
 import {withSuspense} from './hoc/withSuspense';
+import { LoginPage } from './components/Login/Login';
 
 const DialogsContainer: React.FC = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainerWithHooks'))
-const Login = React.lazy(() => import('./components/Login/Login'))
+// const Login = React.lazy(() => import LoginPage('./components/Login/Login'))
 
 const ProfileSuspensed = withSuspense(ProfileContainer)
 const DialogsSuspensed = withSuspense(DialogsContainer)
-const LoginSuspensed = withSuspense(Login)
+const LoginSuspensed = withSuspense(LoginPage)
 
 const App: React.FC<AppPropsType> = (props) => {
 

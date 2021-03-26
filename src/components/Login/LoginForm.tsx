@@ -6,10 +6,10 @@ import s from '../common/FormsControls/FormsControls.module.css'
 
 const maxLength30 = maxLengthCreator(30)
 
-const LoginForm: React.FC<InjectedFormProps<LogiFormValueType, LoginFormOwnProps, string> & LoginFormOwnProps> = ({ handleSubmit, error, captchaUrl, captcha }) => {
-    if (captchaUrl === undefined) {
-        captcha()
-    }
+const LoginForm: React.FC<InjectedFormProps<LoginFormValueType, LoginFormOwnProps, string> & LoginFormOwnProps> = ({ handleSubmit, error, captchaUrl }) => {
+    // if (captchaUrl === undefined) {
+    //     captcha()
+    // }
     return (
 
         <form onSubmit={handleSubmit}>
@@ -20,7 +20,7 @@ const LoginForm: React.FC<InjectedFormProps<LogiFormValueType, LoginFormOwnProps
 
             {createField<LoginFormValueTypeKeys>(undefined, 'rememberMe', [], Input, { type: 'checkbox' }, 'remember me')}
 
-            {<img className={s.captcha} src={captchaUrl} />}
+            {captchaUrl && <img className={s.captcha} src={captchaUrl} />}
             {captchaUrl && createField<LoginFormValueTypeKeys>('i am not robot', 'captcha', [required], Input)}
 
             {error && <div className={s.formSummaryError}>
@@ -33,16 +33,16 @@ const LoginForm: React.FC<InjectedFormProps<LogiFormValueType, LoginFormOwnProps
         </form>
     )
 }
-export const LoginReduxForm = reduxForm<LogiFormValueType, LoginFormOwnProps>({ form: 'login' })(LoginForm)
+export const LoginReduxForm = reduxForm<LoginFormValueType, LoginFormOwnProps>({ form: 'login' })(LoginForm)
 
-export type LogiFormValueType = {
+export type LoginFormValueType = {
     email: string 
     password: string
     rememberMe: boolean
     captcha: string
 }
-type LoginFormValueTypeKeys = Extract<keyof LogiFormValueType, string>
+type LoginFormValueTypeKeys = Extract<keyof LoginFormValueType, string>
 type LoginFormOwnProps = {
-    captchaUrl: string | undefined
-    captcha: () => void
+    captchaUrl: string | null
+
 }

@@ -1,39 +1,39 @@
-import React, { FC } from 'react'
-import { login, getCaptchaUrl } from '../../redux/auth-reducer'
-import {connect, useDispatch, useSelector} from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { AppStateType } from '../../redux/redux-store'
-import { LoginReduxForm } from './LoginForm'
+import React, {FC} from 'react'
+import {getCaptchaUrl, login} from '../../redux/auth-reducer'
+import {useDispatch, useSelector} from 'react-redux'
+import {Redirect} from 'react-router-dom'
+import {LoginReduxForm} from './LoginForm'
+import {AppStateType} from "../../redux/redux-store";
 
-type LoginPropsType = {}
 
-const Login: FC<LoginPropsType> = () => {
 
-    const isAuth = useSelector((state: any) => state.auth.isAuth)
-    const captchaUrl = useSelector((state: any) => state.auth.captchaUrl)
+export const LoginPage: FC = React.memo(() => {
+
+    const isAuth = useSelector((state: AppStateType) => state.auth.isAuth)
+    const captchaUrl = useSelector((state: AppStateType) => state.auth.captchaUrl)
     const dispatch = useDispatch()
-    const login = (email: string, password: string, rememberMe: boolean, captcha:string) => {
-        dispatch(login(email, password, rememberMe, captcha))
-    }
-    const getCaptchaUrl = () => {
-        dispatch(getCaptchaUrl())
-    }
-    const isLogin = (loginData: LogiFormValueType) => {
-        login(loginData.email, loginData.password, loginData.rememberMe, loginData.captcha)
+    // const onlogin = (email: string, password: string, rememberMe: boolean, captcha:string) => {
+    //     dispatch(login(email, password, rememberMe, captcha))
+    // }
+    // const captcha = () => {
+    //     dispatch(getCaptchaUrl())
+    // }
+    const onSubmit = (formData: LoginFormValueType) => {
+        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha))
     }
 
     if (isAuth) {
-        return <Redirect to={'/dialogs'} />
+        return <Redirect to={'/profile'} />
     }
     return <div>
 
         <h2>LOGIN</h2>
-        <LoginReduxForm onSubmit={isLogin} captchaUrl={captchaUrl} captcha={getCaptchaUrl} />
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl} />
 
 
     </div>
-}
-export default Login
+})
+// export default Login
 // const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 //     isAuth: state.auth.isAuth,
 //     captchaUrl: state.auth.captchaUrl
@@ -53,7 +53,7 @@ export default Login
 //
 // type LoginPropsType = MapStatePropsType & MapDispatchPropsType
 //
-type LogiFormValueType = {
+type LoginFormValueType = {
     email: string
     password: string
     rememberMe: boolean
