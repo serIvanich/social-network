@@ -22,11 +22,9 @@ import { LoginPage } from './components/Login/Login';
 
 const DialogsContainer: React.FC = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainerWithHooks'))
-// const Login = React.lazy(() => import LoginPage('./components/Login/Login'))
 
 const ProfileSuspensed = withSuspense(ProfileContainer)
 const DialogsSuspensed = withSuspense(DialogsContainer)
-const LoginSuspensed = withSuspense(LoginPage)
 
 const App: React.FC<AppPropsType> = (props) => {
 
@@ -57,7 +55,7 @@ const App: React.FC<AppPropsType> = (props) => {
                     <Route path='/news' component={News} />
                     <Route path='/music' component={Music} />
                     <Route path='/settings' component={Settings} />
-                    <Route path='/login' render={() => <LoginSuspensed />} />
+                    <Route path='/login' render={() => <LoginPage />} />
                     <Route path='*' render={() => <div>404 NOT FOUND</div>} />
                 </Switch>
             </div>
