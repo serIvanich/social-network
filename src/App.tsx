@@ -75,7 +75,7 @@ const AppContainer = compose<ComponentType>(
     (App)
 
 const SamuraiJSApp: React.FC = () => {
-    return <BrowserRouter>
+    return <BrowserRouter basename={process.env.PUBLIC_URL}>
 
         <Provider store={store}>
             <AppContainer />

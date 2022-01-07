@@ -1,6 +1,6 @@
 import { instance } from "./api"
 
-export const sequrityApi = {
+export const securityApi = {
     getCaptchaUrl () {
         return instance.get<GetCaptchaUrlType>("security/get-captcha-url")
     },

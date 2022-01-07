@@ -2,7 +2,7 @@ import {ResultCodeEnum, ResultCodeForCaptchaEnum } from "../api/api"
 import { FormAction, stopSubmit } from "redux-form"
 import { BaseThunkType, InferActionType } from "./redux-store"
 import { authApi } from "../api/auth-api"
-import { sequrityApi } from "../api/sequrity-api"
+import { securityApi } from "../api/security-api"
 
 let inicialState = {
     userId: null as number | null,
@@ -68,7 +68,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 
 export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
 
-    const response = await sequrityApi.getCaptchaUrl()
+    const response = await securityApi.getCaptchaUrl()
     const captchaUrl = response.data.url
     dispatch(action.getCaptchaUrlSuccess(captchaUrl)
     )

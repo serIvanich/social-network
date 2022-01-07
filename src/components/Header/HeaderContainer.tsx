@@ -10,9 +10,9 @@ export type MSPropsType ={
 }
 type MDPropsType = {logout: () => void}
 type OwnPropsType = {}
-type HeaderConteinerType = MSPropsType & MDPropsType & OwnPropsType
+type HeaderContainerType = MSPropsType & MDPropsType & OwnPropsType
 
-class HeaderContainer extends React.Component<HeaderConteinerType> {
+class HeaderContainer extends React.Component<HeaderContainerType> {
 
     
     render  ()  {

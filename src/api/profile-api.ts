@@ -21,7 +21,7 @@ export const profileApi = {
         .then (response => response.data)
     },
     savePhoto (photoFile: File) {
-        debugger
+
         const formData = new FormData ()
         formData.append('image', photoFile)
 

@@ -1,11 +1,10 @@
-import { AxiosPromise, AxiosResponse } from "axios"
-import { UserType } from "../type/type"
-import { instance, ApiResponseType } from "./api"
+import {UserType} from "../type/type"
+import {ApiResponseType, instance} from "./api"
 
 export const usersApi = {
     
     getUsers(pageSize: number = 10, currentPage: number = 1, term: string = '', friend: null | boolean = null ) {
-        debugger
+
         return instance.get<GetItemsType>
             (`users?count=${pageSize}&page=${currentPage}&term=${term}` + (friend !== null ? `&friend=${friend}`: ''))
         

@@ -1,4 +1,5 @@
 .header {
+    position: relative;
     grid-area: h;
     background-color: goldenrod;
 }
@@ -7,6 +8,8 @@ img {
 }
 
 .loginBlock {
-    margin-left: 840px;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
     color: rgb(255, 255, 255);
 }

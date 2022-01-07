@@ -102,7 +102,8 @@ export const requestUsers = (pageSize: number, currentPage: number, filter: User
 
 const _followUnfollowFlow = async (dispatch: DispatchType<ActionType>,
                                     userId: number,
-                                    actionCreator: (userId: number) => ActionType, apiMethod: (userId: number) => Promise<ApiResponseType>) => {
+                                    actionCreator: (userId: number) => ActionType,
+                                   apiMethod: (userId: number) => Promise<ApiResponseType>) => {
     dispatch(action.toggleIsFollowingProgress(true, userId))
     dispatch(action.toggleIsFetching(true))
     let data = await apiMethod(userId)
